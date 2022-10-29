@@ -19,7 +19,7 @@ import java.util.List;
 @Mapper
 @Repository("userDao")
 public interface UserDao extends BaseMapper<User> {
-    //ibatis test
+    //ibatis tes
     @Select("SELECT\n" +
             "\tsu.id,su.username,\n" +
             "\tsu.password,\n" +
