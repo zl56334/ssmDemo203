@@ -1,4 +1,4 @@
-package com.xkcoding.rbac.security.payload;
+package com.example.ssmdemo203.module.sys.payload;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
  * 登录请求参数
  * </p>
  *
- * @author yangkai.shen
+ * @author zhanglin
  * @date Created in 2018-12-10 15:52
  */
 @Data

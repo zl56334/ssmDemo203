@@ -71,3 +71,16 @@ jwt:
   header: X-Token
   base64-secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
   token-validity-in-seconds: 14400000
+
+custom:
+  config:
+    ignores:
+      # 需要过滤的 post 请求
+      post:
+        - "/login"
+        - "/logout"
+        - "/api/auth/login"
+        - "/api/auth/logout"
+      # 需要过滤的请求，不限方法
+      pattern:
+        - "/test/*"

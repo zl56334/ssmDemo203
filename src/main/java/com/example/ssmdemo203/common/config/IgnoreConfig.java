@@ -1,16 +1,18 @@
-package com.xkcoding.rbac.security.config;
+package com.example.ssmdemo203.common.config;
 
-import com.google.common.collect.Lists;
+
 import lombok.Data;
 
 import java.util.List;
+
+import com.google.common.collect.Lists;
 
 /**
  * <p>
  * 忽略配置
  * </p>
  *
- * @author yangkai.shen
+ * @author zhanglin
  * @date Created in 2018-12-17 17:37
  */
 @Data
