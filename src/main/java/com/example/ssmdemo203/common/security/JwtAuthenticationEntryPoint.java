@@ -21,7 +21,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         System.out.println("认证失败");
 
-        Result result = new Result(ResultCode.UNAUTHRIZED,"认证失败");
+        Result result = new Result(ResultCode.UNAUTHRIZED,e.getMessage());
 
         String json = JSONUtil.toJsonStr(result);
 

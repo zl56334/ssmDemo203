@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ssmdemo203.module.sys.dao.UserDao">
+
+    <insert id="insertUser" parameterType="com.example.ssmdemo203.module.sys.pojo.entity.User">
+        INSERT INTO sys_user ( username, password, name, avatar, introduction, status, create_user, create_time, update_user, update_time )
+        VALUES
+            (
+                #{username},
+                #{password},
+                #{name},
+                #{avatar},
+                #{introduction},
+                #{status},
+                #{createUser},
+                #{createTime},
+                #{updateUser},
+                #{updateTime})
+    </insert>
+
+</mapper>

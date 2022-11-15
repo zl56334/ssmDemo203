@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -166,4 +167,13 @@ public class JwtTokenUtil {
         final Date created = getCreatedDateFromToken(token);
         return (username.equals(user.getUsername())&& !isTokenExpired(token));
     }
+
+    public String getUsernameByRequest(HttpServletRequest request){
+        String tokenPath = jwtProperties.getHeader();
+        String authToken = request.getHeader(tokenPath);
+        String LoginUsername = this.getUsernameFromToken(authToken);
+
+        return LoginUsername;
+    }
+
 }

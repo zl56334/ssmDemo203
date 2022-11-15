@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -17,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.Resource;
+import java.util.function.Consumer;
 
 @Configuration
 @EnableWebSecurity
@@ -66,7 +66,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .loginProcessingUrl("/login")
             .and()
             //自定义认证失败类
-            .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
+            .exceptionHandling()
+            .authenticationEntryPoint(jwtAuthenticationEntryPoint)
             //自定义权限不足处理类
             .accessDeniedHandler(jwtAccessDeinedHandler)
             .and()
@@ -100,6 +101,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 忽略 GET
         customConfig.getIgnores().getGet().forEach(url -> and.ignoring().antMatchers(HttpMethod.GET, url));
+
+        customConfig.getIgnores().getGet().forEach(new Consumer<String>() {
+            @Override
+            public void accept(String url) {
+                and.ignoring().antMatchers(HttpMethod.GET, url);
+            }
+        });
 
         // 忽略 POST
         customConfig.getIgnores().getPost().forEach(url -> and.ignoring().antMatchers(HttpMethod.POST, url));

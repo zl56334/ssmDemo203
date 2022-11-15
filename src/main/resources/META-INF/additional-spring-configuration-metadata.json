@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "custom.config.ignores.post",
+      "type": "java.lang.String",
+      "description": "Description for custom.config.ignores.post."
+    },
+    {
+      "name": "custom.config.ignores.pattern",
+      "type": "java.lang.String",
+      "description": "Description for custom.config.ignores.pattern."
+    }
+  ] }

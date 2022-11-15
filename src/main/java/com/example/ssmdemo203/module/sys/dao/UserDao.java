@@ -56,4 +56,6 @@ public interface UserDao extends BaseMapper<User> {
             "\tupdate_time = #{User.updateTime} \n" +
             "WHERE id = #{User.id}")
     public Integer updateUser(User user);
+
+    Integer insertUser(User user);
 }
