@@ -1,6 +1,5 @@
 package com.example.ssmdemo203.module.sys.controller;
 
-
 import cn.hutool.core.util.StrUtil;
 import com.example.ssmdemo203.common.Result;
 import com.example.ssmdemo203.common.security.impl.UserDetailsServiceImpl;
@@ -37,31 +36,32 @@ public class AuthController {
     private JwtTokenUtil jwtTokenUtil;
 
     @RequestMapping("/login")
-    //添加返回json格式数据 到 Response body中
+    // 添加返回json格式数据 到 Response body中
     @ResponseBody
-    public Result login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password){
-        //创建返回类对象
+    public Result login(@RequestParam(value = "username") String username,
+            @RequestParam(value = "password") String password) {
+        // 创建返回类对象
         Result result = new Result();
-        //获取 parm 数据
+        // 获取 parm 数据
 
-        if (StrUtil.isNotEmpty(username) && StrUtil.isNotEmpty(password)){
+        if (StrUtil.isNotEmpty(username) && StrUtil.isNotEmpty(password)) {
 
-            //获取数据库对应用户
+            // 获取数据库对应用户
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-            if (userDetails != null){
+            if (userDetails != null) {
                 try {
-                    //security框架验证用户
-                    UsernamePasswordAuthenticationToken authenticationToken =
-                            new UsernamePasswordAuthenticationToken(username,password);
-                    //添加对应request 到通行证
+                    // security框架验证用户
+                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                            username, password);
+                    // 添加对应request 到通行证
                     Authentication authentication = authenticationManager.authenticate(authenticationToken);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
 
-                    //生成加密过的token令牌
+                    // 生成加密过的token令牌
                     String token = jwtTokenUtil.generateToken(username);
 
-                    return result.code(10000).message("登录成功").data("X-Token",token);
-                } catch (Exception e){
+                    return result.code(10000).message("登录成功").data("X-Token", token);
+                } catch (Exception e) {
                     e.printStackTrace();
                     return result.code(10001).message("密码错误");
                 }
@@ -73,11 +73,11 @@ public class AuthController {
 
     @RequestMapping("/getUserInfoByToken")
     @ResponseBody
-    public Result getUserInfoByToken(@RequestParam("token") String token){
+    public Result getUserInfoByToken(@RequestParam("token") String token) {
         Result result = new Result();
         String username = jwtTokenUtil.getUsernameFromToken(token);
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        return result.code(10000).message("查询成功").data("userInfo",userDetails);
+        return result.code(10000).message("查询成功").data("userInfo", userDetails);
     }
 
 }

@@ -19,4 +19,45 @@
                 #{updateTime})
     </insert>
 
+    <update id="updateUser" parameterType="com.example.ssmdemo203.module.sys.pojo.entity.User">
+        UPDATE sys_user
+        <set>
+            <if test="username != null">,username = #{username}</if>
+            <if test="password != null">,password = #{password}</if>
+            <if test="name != null">,name = #{name}</if>
+            <if test="avatar != null">,avatar = #{avatar}</if>
+            <if test="introduction != null">,introduction = #{introduction}</if>
+            <if test="status != null">,status = #{status}</if>
+            <if test="createUser != null">,create_user = #{createUser}</if>
+            <if test="createTime != null">,create_time = #{createTime}</if>
+            <if test="updateUser != null">,update_user = #{updateUser}</if>
+            <if test="updateTime != null">,update_time = #{updateTime}</if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+<!--    <update id="updateUsers" parameterType="List">-->
+<!--        UPDATE sys_user-->
+<!--        <set>-->
+<!--            <if test="user.username != null">,username = #{user.username}</if>-->
+<!--            <if test="user.password != null">,password = #{user.password}</if>-->
+<!--            <if test="user.name != null">,name = #{user.name}</if>-->
+<!--            <if test="user.avatar != null">,avatar = #{user.avatar}</if>-->
+<!--            <if test="user.introduction != null">,introduction = #{user.introduction}</if>-->
+<!--            <if test="user.status != null">,status = #{user.status}</if>-->
+<!--            <if test="user.createUser != null">,create_user = #{user.createUser}</if>-->
+<!--            <if test="user.createTime != null">,create_time = #{user.createTime}</if>-->
+<!--            <if test="user.updateUser != null">,update_user = #{user.updateUser}</if>-->
+<!--            <if test="user.updateTime != null">,update_time = #{user.updateTime}</if>-->
+<!--        </set>-->
+<!--        <where>-->
+<!--            id in-->
+<!--            <foreach collection="list" item="user" open="(" separator="," close=")">-->
+<!--                #{user.id}-->
+<!--            </foreach>-->
+<!--        </where>-->
+<!--    </update>-->
+
 </mapper>

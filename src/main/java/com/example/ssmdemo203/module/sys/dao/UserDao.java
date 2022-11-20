@@ -40,22 +40,26 @@ public interface UserDao extends BaseMapper<User> {
             })
     public User findByUsername(String username);
 
-    @Update("UPDATE \n" +
-            "\tsys_user \n" +
-            "SET\n" +
-            "\tid = #{User.id},\n" +
-            "\tusername = #{User.username},\n" +
-            "\t`password` = #{User.password},\n" +
-            "\tNAME = #{User.name},\n" +
-            "\tavatar = #{User.avatar},\n" +
-            "\tintroduction = #{User.introduction},\n" +
-            "\tSTATUS = #{User.status},\n" +
-            "\tcreate_user = #{User.createUser},\n" +
-            "\tcreate_time = #{User.createTime},\n" +
-            "\tupdate_user = #{User.updateUser},\n" +
-            "\tupdate_time = #{User.updateTime} \n" +
-            "WHERE id = #{User.id}")
-    public Integer updateUser(User user);
+//    @Update("UPDATE \n" +
+//            "\tsys_user \n" +
+//            "SET\n" +
+//            "\tid = #{User.id},\n" +
+//            "\tusername = #{User.username},\n" +
+//            "\t`password` = #{User.password},\n" +
+//            "\tNAME = #{User.name},\n" +
+//            "\tavatar = #{User.avatar},\n" +
+//            "\tintroduction = #{User.introduction},\n" +
+//            "\tSTATUS = #{User.status},\n" +
+//            "\tcreate_user = #{User.createUser},\n" +
+//            "\tcreate_time = #{User.createTime},\n" +
+//            "\tupdate_user = #{User.updateUser},\n" +
+//            "\tupdate_time = #{User.updateTime} \n" +
+//            "WHERE id = #{User.id}")
+//    public Integer updateUser(User user);
+
+    Integer updateUser(User user);
 
     Integer insertUser(User user);
+
+    Integer updateUsers(List<User> users);
 }
