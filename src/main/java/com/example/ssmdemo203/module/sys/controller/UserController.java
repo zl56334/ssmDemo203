@@ -1,5 +1,6 @@
 package com.example.ssmdemo203.module.sys.controller;
 
+import cn.hutool.core.util.StrUtil;
 import com.example.ssmdemo203.common.Result;
 import com.example.ssmdemo203.common.config.JwtProperties;
 import com.example.ssmdemo203.common.utils.JwtTokenUtil;
@@ -130,6 +131,25 @@ public class UserController {
 
         Integer reInt = userService.updateUserBatch(saveList);
         return result.code(10000).message("已修改："+reInt+" 条数据");
+    }
+
+    @ResponseBody
+    @RequestMapping("/deleteuser")
+    public Result deleteUser(@RequestBody User user) {
+        Integer reInt = userService.deleteUser(user);
+        return new Result().code(10000).message("已删除："+reInt+" 条数据");
+    }
+
+    @ResponseBody
+    @RequestMapping("/selectuserbystatus")
+    public Result selectUserByStatus(@RequestBody User user) {
+
+        if (user.getStatus() != null){
+            List<User> reList = userService.selectUserByStatus(user);
+            return new Result().code(10000).message("查询成功").data("userList",reList);
+        }
+
+        return new Result().code(10001).message("查询失败，缺少必要参数");
     }
 
 }

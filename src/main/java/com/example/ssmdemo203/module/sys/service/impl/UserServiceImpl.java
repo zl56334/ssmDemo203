@@ -52,4 +52,14 @@ public class UserServiceImpl implements UserService {
         return reInt;
     }
 
+    @Override
+    public Integer deleteUser(User user) {
+        return userDao.deleteUser(user);
+    }
+
+    @Override
+    public List<User> selectUserByStatus(User user) {
+        return userDao.selectUserByStatus(user);
+    }
+
 }

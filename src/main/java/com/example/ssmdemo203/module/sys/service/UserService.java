@@ -16,4 +16,8 @@ public interface UserService {
 
     Integer updateUserBatch(List<User> users);
 
+    Integer deleteUser(User user);
+
+    List<User> selectUserByStatus(User user);
+
 }

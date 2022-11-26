@@ -60,4 +60,29 @@
 <!--        </where>-->
 <!--    </update>-->
 
+    <delete id="deleteUser" parameterType="com.example.ssmdemo203.module.sys.pojo.entity.User">
+        delete from sys_user where id = #{id}
+    </delete>
+
+    <select id="selectUserByStatus" parameterType="com.example.ssmdemo203.module.sys.pojo.entity.User"
+            resultType="com.example.ssmdemo203.module.sys.pojo.entity.User">
+        SELECT
+            sys_user.id,
+            sys_user.username,
+            sys_user.password,
+            sys_user.name,
+            sys_user.avatar,
+            sys_user.introduction,
+            sys_user.status,
+            sys_user.create_user,
+            sys_user.create_time,
+            sys_user.update_user,
+            sys_user.update_time
+        FROM
+            sys_user
+        WHERE
+            sys_user.status = #{status}
+    </select>
+
+
 </mapper>

@@ -44,6 +44,9 @@ public class AuthController {
         Result result = new Result();
         // 获取 parm 数据
 
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String bcpassword = bCryptPasswordEncoder.encode(password);
+
         if (StrUtil.isNotEmpty(username) && StrUtil.isNotEmpty(password)) {
 
             // 获取数据库对应用户

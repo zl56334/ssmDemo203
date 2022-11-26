@@ -62,4 +62,8 @@ public interface UserDao extends BaseMapper<User> {
     Integer insertUser(User user);
 
     Integer updateUsers(List<User> users);
+
+    Integer deleteUser(User user);
+
+    List<User> selectUserByStatus(User user);
 }
