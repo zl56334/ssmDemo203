@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/api/auth/")
@@ -39,7 +40,7 @@ public class AuthController {
     // 添加返回json格式数据 到 Response body中
     @ResponseBody
     public Result login(@RequestParam(value = "username") String username,
-            @RequestParam(value = "password") String password) {
+                        @RequestParam(value = "password") String password) {
         // 创建返回类对象
         Result result = new Result();
         // 获取 parm 数据

@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Import style -->
+    <link rel="stylesheet" href="/admin/static/css/index.css" />
+    <!-- Import Vue 3 -->
+    <script src="/admin/static/css/vue.global.js"></script>
+    <!-- Import component library -->
+    <script src="/admin/static/css/index.full.js"></script>
+
+    <script type="text/javascript" src="/admin/static/js/jquery-3.6.1.min.js"></script>
 </head>
 <body>
-$END$
+    <div class="example-showcase" >
+        <form action="/admin/api/auth/login" method="post">
+            <div id="app" class="el-input__wrapper">
+                <p id="ptext" th:text="${name}">用户名</p><input type="text" class="el-input__inner" name="username" placeholder="123123"/>
+            </div>
+            <div id="app1" class="el-input__wrapper">
+                密码<input type="password" class="el-input__inner" name="password" placeholder="密码"/>
+            </div>
+            <p id="ptime" th:text="${time}">123123123</p>
+            <input type="submit" class="el-button" value="登录">
+        </form>
+    </div>
 </body>
+<script>
+
+    $(function(){
+        //DOM js
+        document.getElementById("ptime").innerHTML="新文本!";
+        // jq
+        $("#ptext").hide();
+        $("#ptext").css({"font-size":"200%"});
+
+        console.log("test");
+    });
+
+</script>
 </html>

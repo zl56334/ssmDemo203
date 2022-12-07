@@ -63,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             //自定义失败拦截器
             .failureHandler(loginFailureHandler)
             //自定义登录拦截地址
-            .loginProcessingUrl("/login")
+            .loginProcessingUrl("/login.html")
             .and()
             //自定义认证失败类
             .exceptionHandling()
@@ -76,7 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .authorizeRequests()
             .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-            .antMatchers("/login").permitAll()
+            .antMatchers("/login.html").permitAll()
             .anyRequest().authenticated();
 
         //允许跨域
@@ -98,7 +98,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         WebSecurity and = web.ignoring().and();
-
+        and.ignoring().antMatchers("/global/**");
+        and.ignoring().antMatchers("/static/**");
         // 忽略 GET
         customConfig.getIgnores().getGet().forEach(url -> and.ignoring().antMatchers(HttpMethod.GET, url));
 
